@@ -1,0 +1,19 @@
+html {
+    // It's more accessible, let the user use the zoom properly 
+    font-size: 100%;
+    box-sizing: border-box;
+}
+
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+// Doing some reset 
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Public Sans', sans-serif;
+    //Add some spacing between lines
+    line-height: 1.3;
+}
