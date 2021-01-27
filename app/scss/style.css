@@ -1,13 +1,18 @@
+.has-fade {
+  visibility: hidden;
+}
+
 @-webkit-keyframes fade-in {
   from {
     visibility: hidden;
     opacity: 0;
   }
   1% {
-    visibility: 0;
+    visibility: visible;
     opacity: 0;
   }
   to {
+    visibility: visible;
     opacity: 1;
   }
 }
@@ -18,17 +23,18 @@
     opacity: 0;
   }
   1% {
-    visibility: 0;
+    visibility: visible;
     opacity: 0;
   }
   to {
+    visibility: visible;
     opacity: 1;
   }
 }
 
 .fade-in {
-  -webkit-animation: fade-in 300ms ease-in-out forwards;
-          animation: fade-in 300ms ease-in-out forwards;
+  -webkit-animation: fade-in 200ms ease-in-out forwards;
+          animation: fade-in 200ms ease-in-out forwards;
 }
 
 @-webkit-keyframes fade-out {
@@ -62,8 +68,8 @@
 }
 
 .fade-out {
-  -webkit-animation: fade-out 300ms ease-in-out forwards;
-          animation: fade-out 300ms ease-in-out forwards;
+  -webkit-animation: fade-out 200ms ease-in-out forwards;
+          animation: fade-out 200ms ease-in-out forwards;
 }
 
 html {
@@ -72,7 +78,9 @@ html {
           box-sizing: border-box;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   -webkit-box-sizing: inherit;
           box-sizing: inherit;
 }
@@ -80,15 +88,26 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Public Sans', sans-serif;
+  font-family: "Public Sans", sans-serif;
   font-size: 1.125rem;
   font-weight: 300;
   color: #9698a6;
   line-height: 1.3;
 }
 
-a, a:visited, a:hover {
+body.noscroll {
+  overflow: hidden;
+}
+
+a,
+a:visited,
+a:hover {
   text-decoration: none;
+}
+
+.container {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .flex {
@@ -115,7 +134,8 @@ a, a:visited, a:hover {
           align-items: center;
 }
 
-button, .button {
+button,
+.button {
   padding: 0.875rem 2.1875rem;
   background: -webkit-gradient(linear, left top, right top, from(#31d35c), to(#2bb7da));
   background: linear-gradient(to right, #31d35c, #2bb7da);
@@ -138,16 +158,16 @@ button, .button {
   }
 }
 
-.header.open .header__menu > span:first-child {
+.header.open .header__toogle > span:first-child {
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
 }
 
-.header.open .header__menu > span:nth-child(2) {
+.header.open .header__toogle > span:nth-child(2) {
   opacity: 0;
 }
 
-.header.open .header__menu > span:last-child {
+.header.open .header__toogle > span:last-child {
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }
@@ -155,7 +175,7 @@ button, .button {
 .header .overlay {
   opacity: 0;
   position: fixed;
-  top: 3.75rem;
+  top: 0px;
   right: 0px;
   bottom: 0px;
   left: 0px;
@@ -172,7 +192,10 @@ button, .button {
 }
 
 .header nav {
-  padding: 1.0625rem 1.5rem;
+  position: relative;
+  background-color: white;
+  padding-top: 1.0625rem;
+  padding-bottom: 1.0625rem;
 }
 
 .header__logo img {
@@ -180,7 +203,7 @@ button, .button {
   height: 1.375rem;
 }
 
-.header__menu > span {
+.header__toggle > span {
   display: block;
   width: 26px;
   height: 2px;
@@ -191,8 +214,27 @@ button, .button {
           transform-origin: 3px 1px;
 }
 
-.header__menu > span:not(:last-child) {
+.header__toggle > span:not(:last-child) {
   margin-bottom: 5px;
+}
+
+.header__menu {
+  position: absolute;
+  width: calc(100% - 3rem);
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background: white;
+  margin-top: 1.5rem;
+  padding: 1.625rem;
+  border-radius: 5px;
+}
+
+.header__menu a {
+  display: block;
+  padding: 0.625rem;
+  color: #2d314d;
+  text-align: center;
 }
 
 .header__links a {
@@ -239,5 +281,26 @@ button, .button {
 
 .header__cta:hover {
   opacity: 0.75;
+}
+
+.hero__image {
+  border: 1px solid magenta;
+  position: relative;
+  background-image: url("/images/bg-intro-mobile.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  min-height: 17.5rem;
+}
+
+.hero__image::before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-image: url("/images/image-mockups.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center bottom;
 }
 /*# sourceMappingURL=style.css.map */
